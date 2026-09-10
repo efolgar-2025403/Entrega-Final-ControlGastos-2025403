@@ -1,0 +1,689 @@
+/* =========================================
+   CONTROL-GASTOS — REGISTER
+   Diseño oscuro premium / Gold
+   ========================================= */
+
+:host {
+  --gold: #d4af37;
+  --gold-light: #e2c35a;
+  --black: #080808;
+  --surface-card: rgba(28, 27, 27, 0.82);
+  --white: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border: rgba(212, 175, 55, 0.18);
+}
+
+/* =========================================
+   PÁGINA
+   ========================================= */
+
+.register-page {
+  min-height: 100vh;
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  padding: 32px 20px;
+
+  background: var(--black);
+  color: var(--white);
+}
+
+/* =========================================
+   FONDO
+   ========================================= */
+
+.register-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% -10%,
+      rgba(212, 175, 55, 0.16) 0%,
+      rgba(212, 175, 55, 0.05) 25%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 100% 50%,
+      rgba(212, 175, 55, 0.08),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 0% 80%,
+      rgba(212, 175, 55, 0.05),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.025) 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.018) 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #080808 0%,
+      #111111 35%,
+      #1a1a1a 60%,
+      #090909 100%
+    );
+
+  background-size:
+    auto,
+    auto,
+    auto,
+    220px 220px,
+    280px 280px,
+    auto;
+
+  transform: scale(1.05);
+}
+
+/* =========================================
+   TEXTURA
+   ========================================= */
+
+.register-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+  opacity: 0.35;
+}
+
+/* =========================================
+   VIÑETA
+   ========================================= */
+
+.register-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 35%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+}
+
+/* =========================================
+   CONTENEDOR
+   ========================================= */
+
+.register-container {
+  width: 100%;
+  max-width: 450px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   CARD
+   ========================================= */
+
+.register-card {
+  width: 100%;
+
+  padding: 40px;
+
+  position: relative;
+
+  background: var(--surface-card);
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(212, 175, 55, 0.04);
+
+  animation: cardAppear 0.5s ease-out;
+}
+
+/* Línea dorada */
+
+.register-card::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 15%;
+
+  width: 70%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.5),
+    transparent
+  );
+}
+
+/* =========================================
+   BRAND
+   ========================================= */
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   LOGO LIMPIO
+   ========================================= */
+
+.brand-logo {
+  width: 135px;
+  height: 135px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 0;
+
+  padding: 0;
+
+  overflow: visible;
+
+  box-shadow: none;
+}
+
+/* PNG */
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+
+  filter:
+    drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 18px rgba(212, 175, 55, 0.08));
+}
+
+/* =========================================
+   TEXTO BRAND
+   ========================================= */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 3px;
+}
+
+.brand-text strong {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.brand-text span {
+  font-size: 10px;
+  color: var(--text-secondary);
+
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.register-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: var(--gold);
+}
+
+.register-header h1 {
+  margin: 0 0 7px;
+
+  font-size: 28px;
+  font-weight: 600;
+
+  color: var(--white);
+}
+
+.register-header p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   ERROR
+   ========================================= */
+
+.register-error {
+  margin-bottom: 18px;
+
+  padding: 11px 14px;
+
+  border-radius: 8px;
+
+  background: rgba(180, 45, 45, 0.12);
+  border: 1px solid rgba(220, 80, 80, 0.3);
+
+  color: #ff8c8c;
+
+  font-size: 13px;
+  text-align: center;
+
+  animation: errorAppear 0.25s ease-out;
+}
+
+/* =========================================
+   FORM
+   ========================================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dddddd;
+}
+
+/* =========================================
+   INPUT
+   ========================================= */
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper > .material-symbols-outlined {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 20px;
+  color: var(--gold);
+
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 49px;
+
+  padding: 0 47px;
+
+  box-sizing: border-box;
+
+  border-radius: 9px;
+
+  border: 1px solid rgba(212, 175, 55, 0.13);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--white);
+
+  font-family: inherit;
+  font-size: 13px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(160, 160, 160, 0.55);
+}
+
+.input-wrapper input:focus {
+  border-color: rgba(212, 175, 55, 0.55);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+/* =========================================
+   PASSWORD TOGGLE
+   ========================================= */
+
+.password-toggle {
+  position: absolute;
+
+  right: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #777777;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: var(--gold);
+}
+
+.password-toggle .material-symbols-outlined {
+  font-size: 20px;
+}
+
+/* =========================================
+   BOTÓN
+   ========================================= */
+
+.register-button {
+  width: 100%;
+  height: 50px;
+
+  margin-top: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: var(--gold);
+
+  color: #131313;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px rgba(212, 175, 55, 0.18);
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register-button:hover:not(:disabled) {
+  background: var(--gold-light);
+
+  box-shadow:
+    0 10px 30px rgba(212, 175, 55, 0.28);
+}
+
+.register-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.register-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-button .material-symbols-outlined {
+  font-size: 19px;
+}
+
+/* =========================================
+   LOGIN LINK
+   ========================================= */
+
+.login-link {
+  margin-top: 24px;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: #8f8f8f;
+}
+
+.login-link a {
+  margin-left: 5px;
+
+  color: var(--gold);
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.login-link a:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.register-footer {
+  margin-top: 22px;
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 4px;
+
+  font-size: 9px;
+
+  color: #666666;
+
+  letter-spacing: 0.7px;
+
+  text-align: center;
+}
+
+.register-footer span:first-child {
+  color: var(--gold);
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 480px) {
+  .register-page {
+    padding: 20px 15px;
+  }
+
+  .register-card {
+    padding: 32px 24px;
+  }
+
+  .brand-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .register-header h1 {
+    font-size: 25px;
+  }
+
+  .register-header p {
+    font-size: 12px;
+  }
+
+  .input-wrapper input {
+    height: 48px;
+  }
+
+  .register-button {
+    height: 49px;
+  }
+}
+
+/* =========================================
+   PANTALLAS PEQUEÑAS
+   ========================================= */
+
+@media (max-height: 750px) {
+  .register-page {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .register-card {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+
+  .brand {
+    margin-bottom: 18px;
+  }
+
+  .brand-logo {
+    width: 105px;
+    height: 105px;
+    margin-bottom: 8px;
+  }
+
+  .register-header {
+    margin-bottom: 18px;
+  }
+
+  form {
+    gap: 13px;
+  }
+
+  .login-link {
+    margin-top: 17px;
+  }
+
+  .register-footer {
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+}

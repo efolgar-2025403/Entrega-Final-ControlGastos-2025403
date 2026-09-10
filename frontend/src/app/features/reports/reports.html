@@ -1,0 +1,415 @@
+<section class="reports-page">
+
+  <header class="page-header">
+
+    <div>
+
+      <span class="page-eyebrow">
+        ANÁLISIS FINANCIERO
+      </span>
+
+      <h1>
+        Reportes
+      </h1>
+
+      <p>
+        Analice cómo se distribuyen sus gastos y conozca el comportamiento
+        de sus finanzas.
+      </p>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="refresh-button"
+      (click)="loadData()"
+      [disabled]="loading"
+    >
+
+      <span class="material-symbols-outlined">
+        refresh
+      </span>
+
+      <span>
+        {{ loading ? 'Actualizando...' : 'Actualizar' }}
+      </span>
+
+    </button>
+
+  </header>
+
+
+  @if (errorMessage) {
+
+    <div class="alert error">
+
+      <span class="material-symbols-outlined">
+        error
+      </span>
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+    </div>
+
+  }
+
+
+  @if (loading) {
+
+    <div class="loading-card">
+
+      <div class="loader"></div>
+
+      <p>
+        Generando reporte...
+      </p>
+
+    </div>
+
+  } @else {
+
+
+    <!-- =========================================
+         RESUMEN
+         ========================================= -->
+
+    <section class="summary-grid">
+
+
+      <!-- TOTAL -->
+
+      <article class="summary-card featured">
+
+        <div class="summary-icon gold">
+
+          <span class="material-symbols-outlined">
+            payments
+          </span>
+
+        </div>
+
+        <div>
+
+          <span>
+            Total gastado
+          </span>
+
+          <strong>
+            Q {{ totalAmount | number:'1.2-2' }}
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <!-- CANTIDAD -->
+
+      <article class="summary-card">
+
+        <div class="summary-icon">
+
+          <span class="material-symbols-outlined">
+            receipt_long
+          </span>
+
+        </div>
+
+        <div>
+
+          <span>
+            Gastos registrados
+          </span>
+
+          <strong>
+            {{ totalExpenses }}
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROMEDIO -->
+
+      <article class="summary-card">
+
+        <div class="summary-icon">
+
+          <span class="material-symbols-outlined">
+            calculate
+          </span>
+
+        </div>
+
+        <div>
+
+          <span>
+            Gasto promedio
+          </span>
+
+          <strong>
+            Q {{ averageExpense | number:'1.2-2' }}
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <!-- MAYOR GASTO -->
+
+      <article class="summary-card">
+
+        <div class="summary-icon">
+
+          <span class="material-symbols-outlined">
+            trending_up
+          </span>
+
+        </div>
+
+        <div>
+
+          <span>
+            Mayor gasto
+          </span>
+
+          <strong>
+            Q {{ highestExpense | number:'1.2-2' }}
+          </strong>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =========================================
+         REPORTES
+         ========================================= -->
+
+    <div class="reports-grid">
+
+
+      <!-- =====================================
+           DISTRIBUCIÓN
+           ===================================== -->
+
+      <section class="card category-report">
+
+        <div class="card-header">
+
+          <div>
+
+            <span class="section-label">
+              DISTRIBUCIÓN
+            </span>
+
+            <h2>
+              Gastos por categoría
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        @if (reports.length === 0) {
+
+          <div class="empty-state">
+
+            <div class="empty-icon">
+
+              <span class="material-symbols-outlined">
+                pie_chart
+              </span>
+
+            </div>
+
+            <h3>
+              No hay datos suficientes
+            </h3>
+
+            <p>
+              Registre algunos gastos para generar estadísticas.
+            </p>
+
+          </div>
+
+        } @else {
+
+          <div class="category-list">
+
+            @for (report of reports; track report.category.id) {
+
+              <article class="category-row">
+
+
+                <div class="category-info">
+
+                  <div class="category-title">
+
+                    <span class="category-dot"></span>
+
+                    <strong>
+                      {{ report.category.name }}
+                    </strong>
+
+                  </div>
+
+                  <span class="category-count">
+
+                    {{ report.count }}
+
+                    {{ report.count === 1
+                      ? 'gasto'
+                      : 'gastos'
+                    }}
+
+                  </span>
+
+                </div>
+
+
+                <div class="category-values">
+
+                  <strong>
+                    Q {{ report.total | number:'1.2-2' }}
+                  </strong>
+
+                  <span>
+                    {{ getPercentage(report.percentage) }}%
+                  </span>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-bar"
+                    [style.width.%]="report.percentage"
+                  ></div>
+
+                </div>
+
+              </article>
+
+            }
+
+          </div>
+
+        }
+
+      </section>
+
+
+      <!-- =====================================
+           ACTIVIDAD
+           ===================================== -->
+
+      <section class="card recent-report">
+
+        <div class="card-header">
+
+          <div>
+
+            <span class="section-label">
+              ACTIVIDAD
+            </span>
+
+            <h2>
+              Últimos gastos
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        @if (expenses.length === 0) {
+
+          <div class="empty-state">
+
+            <div class="empty-icon">
+
+              <span class="material-symbols-outlined">
+                receipt_long
+              </span>
+
+            </div>
+
+            <h3>
+              Sin actividad
+            </h3>
+
+            <p>
+              No hay gastos registrados.
+            </p>
+
+          </div>
+
+        } @else {
+
+          <div class="expense-list">
+
+            @for (
+              expense of expenses.slice().reverse().slice(0, 6);
+              track expense.id
+            ) {
+
+              <article class="expense-item">
+
+                <div class="expense-main">
+
+                  <span class="expense-dot"></span>
+
+                  <div>
+
+                    <strong>
+                      {{ expense.description }}
+                    </strong>
+
+                    <small>
+
+                      {{ getCategoryName(expense.category_id) }}
+
+                      <span class="separator">
+                        ·
+                      </span>
+
+                      {{ getDate(expense.date) | date:'dd/MM/yyyy' }}
+
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+                <strong class="expense-amount">
+
+                  - Q {{ expense.amount | number:'1.2-2' }}
+
+                </strong>
+
+              </article>
+
+            }
+
+          </div>
+
+        }
+
+      </section>
+
+    </div>
+
+  }
+
+</section>

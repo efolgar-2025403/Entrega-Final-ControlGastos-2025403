@@ -1,0 +1,611 @@
+﻿:host {
+  display: block;
+
+  --bg: #080808;
+  --surface: #0a0a0a;
+  --surface-low: #121212;
+  --surface-high: #1b1b1b;
+
+  --border: #27272a;
+  --border-light: #1c1c1c;
+
+  --gold: #d4af37;
+  --gold-dim: #c5a028;
+  --gold-soft: rgba(212, 175, 55, 0.08);
+  --gold-border: rgba(212, 175, 55, 0.2);
+
+  --text: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.movements-page {
+  width: 100%;
+  max-width: 1440px;
+
+  min-height: 100%;
+
+  margin: 0 auto;
+  padding: 32px;
+
+  box-sizing: border-box;
+
+  background: var(--bg);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+}
+
+.page-eyebrow,
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+  line-height: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 32px;
+  line-height: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  margin: 7px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  line-height: 21px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   TOTAL CARD
+   ========================================= */
+
+.total-card {
+  min-width: 180px;
+
+  padding: 16px 20px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--gold-border);
+
+  border-radius: 10px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(212, 175, 55, 0.08),
+      transparent 55%
+    ),
+    var(--surface);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.total-card span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.total-card strong {
+  display: block;
+
+  color: var(--gold);
+
+  font-size: 24px;
+
+  line-height: 30px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================
+   ALERT
+   ========================================= */
+
+.alert {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 16px;
+
+  margin-bottom: 20px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+}
+
+.alert.error {
+  border: 1px solid rgba(239, 68, 68, 0.2);
+
+  background: rgba(239, 68, 68, 0.06);
+
+  color: #fca5a5;
+}
+
+.alert .material-symbols-outlined {
+  font-size: 18px;
+}
+
+
+/* =========================================
+   CARD
+   ========================================= */
+
+.card {
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 21px 22px;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card-header h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 18px;
+  line-height: 26px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+}
+
+
+/* =========================================
+   REFRESH BUTTON
+   ========================================= */
+
+.refresh-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 38px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: var(--surface-low);
+
+  color: var(--text-secondary);
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.refresh-button:hover {
+  color: var(--gold);
+
+  background: var(--gold-soft);
+
+  border-color: var(--gold-border);
+
+  transform: translateY(-1px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.refresh-button .material-symbols-outlined {
+  font-size: 17px;
+}
+
+
+/* =========================================
+   TABLE
+   ========================================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+thead {
+  background: var(--surface-low);
+}
+
+th {
+  padding: 13px 22px;
+
+  text-align: left;
+
+  color: var(--text-muted);
+
+  font-size: 9px;
+
+  line-height: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+td {
+  padding: 16px 22px;
+
+  border-top: 1px solid var(--border-light);
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  line-height: 20px;
+}
+
+tbody tr {
+  transition:
+    background 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #101010;
+}
+
+
+/* =========================================
+   DATE
+   ========================================= */
+
+.date-cell {
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   EXPENSE DESCRIPTION
+   ========================================= */
+
+.expense-description {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: var(--text);
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.expense-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.25);
+}
+
+
+/* =========================================
+   CATEGORY
+   ========================================= */
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border: 1px solid var(--gold-border);
+
+  border-radius: 6px;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+
+  font-size: 11px;
+
+  line-height: 16px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   AMOUNT
+   ========================================= */
+
+.amount {
+  color: var(--gold);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   STATE
+   ========================================= */
+
+.state-message {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 250px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  color: var(--text-muted);
+}
+
+.state-message h3 {
+  margin: 12px 0 5px;
+
+  color: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.state-message p {
+  margin: 0;
+
+  max-width: 360px;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  line-height: 18px;
+}
+
+
+/* =========================================
+   EMPTY ICON
+   ========================================= */
+
+.empty-icon {
+  display: grid;
+  place-items: center;
+
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 2px;
+
+  border: 1px solid var(--gold-border);
+
+  border-radius: 10px;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+}
+
+.empty-icon .material-symbols-outlined {
+  font-size: 22px;
+}
+
+
+/* =========================================
+   LOADER
+   ========================================= */
+
+.loader {
+  width: 25px;
+  height: 25px;
+
+  border: 2px solid var(--border);
+
+  border-top-color: var(--gold);
+
+  border-radius: 50%;
+
+  animation: movements-spin 0.8s linear infinite;
+}
+
+@keyframes movements-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .movements-page {
+    padding: 28px 24px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .movements-page {
+    padding: 24px 16px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+
+    line-height: 34px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .total-card {
+    width: 100%;
+  }
+
+  .card-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 18px;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+
+  th {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  td {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+}

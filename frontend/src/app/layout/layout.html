@@ -1,0 +1,752 @@
+<div class="app-shell">
+
+  <!-- =========================================
+       SIDEBAR DESKTOP
+       ========================================= -->
+  <aside class="sidebar">
+
+    <!-- BRAND -->
+    <div class="brand">
+
+      <div class="brand-logo">
+        <img
+          src="/logo.png"
+          alt="Logo Control-Gastos"
+        />
+      </div>
+
+      <div class="brand-info">
+        <h1>Control-Gastos</h1>
+      </div>
+
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navigation">
+
+      <span class="navigation-label">
+        PRINCIPAL
+      </span>
+
+      <!-- DASHBOARD -->
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          dashboard
+        </span>
+
+        <span class="nav-text">
+          Dashboard
+        </span>
+      </a>
+
+      <!-- INGRESOS -->
+      <a
+        routerLink="/income"
+        routerLinkActive="active"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          payments
+        </span>
+
+        <span class="nav-text">
+          Ingresos
+        </span>
+      </a>
+
+      <!-- GASTOS -->
+      <a
+        routerLink="/expenses"
+        routerLinkActive="active"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          receipt_long
+        </span>
+
+        <span class="nav-text">
+          Gastos
+        </span>
+      </a>
+
+      <!-- CATEGORÍAS -->
+      <a
+        routerLink="/categories"
+        routerLinkActive="active"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          category
+        </span>
+
+        <span class="nav-text">
+          Categorías
+        </span>
+      </a>
+
+      <!-- MOVIMIENTOS -->
+      <a
+        routerLink="/movements"
+        routerLinkActive="active"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          receipt_long
+        </span>
+
+        <span class="nav-text">
+          Movimientos
+        </span>
+      </a>
+
+      <!-- ANÁLISIS -->
+      <span class="navigation-label navigation-label-analysis">
+        ANÁLISIS
+      </span>
+
+      <!-- REPORTES -->
+      <a
+        routerLink="/reports"
+        routerLinkActive="active"
+        class="nav-item"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          insert_chart
+        </span>
+
+        <span class="nav-text">
+          Reportes
+        </span>
+      </a>
+
+    </nav>
+
+    <!-- FOOTER SIDEBAR -->
+    <div class="sidebar-footer">
+
+      <!-- NUEVO GASTO -->
+      <button
+        type="button"
+        class="add-expense-button"
+        routerLink="/expenses"
+      >
+        <span class="material-symbols-outlined">
+          add
+        </span>
+
+        <span>
+          Nuevo gasto
+        </span>
+      </button>
+
+      <!-- CERRAR SESIÓN -->
+      <button
+        type="button"
+        class="nav-item footer-nav-item logout-item"
+        (click)="logout()"
+      >
+        <span class="material-symbols-outlined nav-icon">
+          logout
+        </span>
+
+        <span class="nav-text">
+          Cerrar sesión
+        </span>
+      </button>
+
+      <div class="sidebar-footer-divider"></div>
+
+      <!-- VERSIÓN -->
+      <div class="version">
+
+        <div class="version-info">
+
+          <span class="version-label">
+            CONTROL-GASTOS
+          </span>
+
+          <span class="version-number">
+            v1.0.0
+          </span>
+
+        </div>
+
+        <span class="version-status">
+          ●
+        </span>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================
+       MOBILE TOPBAR
+       ========================================= -->
+  <header class="mobile-topbar">
+
+    <!-- BRAND MOBILE -->
+    <div class="mobile-brand">
+
+      <div class="mobile-brand-logo">
+        <img
+          src="/logo.png"
+          alt="Logo Control-Gastos"
+        />
+      </div>
+
+      <div class="mobile-brand-info">
+
+        <strong>
+          Control-Gastos
+        </strong>
+
+        <span>
+          Elite Management
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- ACCIONES MOBILE -->
+    <div class="mobile-actions">
+
+      <!-- NOTIFICACIONES -->
+      <div class="notification-wrapper">
+
+        <button
+          type="button"
+          aria-label="Notificaciones"
+          (click)="toggleNotifications()"
+        >
+          <span class="material-symbols-outlined">
+            notifications
+          </span>
+
+          @if (!notificationsRead) {
+            <span class="notification-badge">
+              2
+            </span>
+          }
+        </button>
+
+        @if (notificationsOpen) {
+
+          <div class="notification-panel">
+
+            <div class="notification-panel-header">
+
+              <div>
+
+                <span class="notification-label">
+                  CENTRO DE NOTIFICACIONES
+                </span>
+
+                <h3>
+                  Notificaciones
+                </h3>
+
+              </div>
+
+              <span class="notification-count">
+                2
+              </span>
+
+            </div>
+
+
+            <!-- NOTIFICACIÓN 1 -->
+            <div class="notification-item">
+
+              <div class="notification-icon gold">
+
+                <span class="material-symbols-outlined">
+                  payments
+                </span>
+
+              </div>
+
+              <div class="notification-content">
+
+                <strong>
+                  Control de gastos
+                </strong>
+
+                <span>
+                  Recuerda mantener actualizados tus gastos registrados.
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- NOTIFICACIÓN 2 -->
+            <div class="notification-item">
+
+              <div class="notification-icon">
+
+                <span class="material-symbols-outlined">
+                  security
+                </span>
+
+              </div>
+
+              <div class="notification-content">
+
+                <strong>
+                  Seguridad de la cuenta
+                </strong>
+
+                <span>
+                  Tu sesión se encuentra protegida correctamente.
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- CUENTA MOBILE -->
+      <div class="account-wrapper">
+
+        <button
+          type="button"
+          aria-label="Cuenta"
+          (click)="toggleAccount()"
+        >
+          <span class="material-symbols-outlined">
+            account_circle
+          </span>
+        </button>
+
+
+        @if (accountOpen) {
+
+          <div class="account-panel">
+
+            <!-- INFORMACIÓN DEL USUARIO -->
+            <div class="account-header">
+
+              <div class="account-avatar">
+
+                <span class="material-symbols-outlined">
+                  person
+                </span>
+
+              </div>
+
+              <div class="account-info">
+
+                <strong>
+                  {{ user?.name || 'Usuario' }}
+                </strong>
+
+                <span>
+                  {{ user?.email || 'Sin correo' }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="account-divider"></div>
+
+
+            <!-- ESTADO -->
+            <div class="account-status">
+
+              <span class="status-dot"></span>
+
+              <span>
+                Sesión activa · ID #{{ user?.id }}
+              </span>
+
+            </div>
+
+
+            <!-- CERRAR SESIÓN -->
+            <button
+              type="button"
+              class="account-logout"
+              (click)="logout()"
+            >
+
+              <span class="material-symbols-outlined">
+                logout
+              </span>
+
+              <span>
+                Cerrar sesión
+              </span>
+
+            </button>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       CONTENIDO PRINCIPAL
+       ========================================= -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <span class="topbar-label">
+          GESTIÓN FINANCIERA
+        </span>
+
+        <h1>
+          Control-Gastos
+        </h1>
+
+      </div>
+
+
+      <div class="topbar-right">
+
+        <!-- ESTADO DEL SISTEMA -->
+        <div class="system-status">
+
+          <span class="status-dot"></span>
+
+          <span>
+            Sistema operativo
+          </span>
+
+        </div>
+
+        <div class="topbar-divider"></div>
+
+
+        <!-- NOTIFICACIONES -->
+        <div class="notification-wrapper">
+
+          <button
+            type="button"
+            class="notification-button"
+            aria-label="Notificaciones"
+            (click)="toggleNotifications()"
+          >
+
+            <span class="material-symbols-outlined">
+              notifications
+            </span>
+
+            @if (!notificationsRead) {
+
+              <span class="notification-badge">
+                2
+              </span>
+
+            }
+
+          </button>
+
+
+          @if (notificationsOpen) {
+
+            <div class="notification-panel">
+
+              <div class="notification-panel-header">
+
+                <div>
+
+                  <span class="notification-label">
+                    CENTRO DE NOTIFICACIONES
+                  </span>
+
+                  <h3>
+                    Notificaciones
+                  </h3>
+
+                </div>
+
+                <span class="notification-count">
+                  2
+                </span>
+
+              </div>
+
+
+              <!-- NOTIFICACIÓN 1 -->
+              <div class="notification-item">
+
+                <div class="notification-icon gold">
+
+                  <span class="material-symbols-outlined">
+                    payments
+                  </span>
+
+                </div>
+
+                <div class="notification-content">
+
+                  <strong>
+                    Control de gastos
+                  </strong>
+
+                  <span>
+                    Recuerda mantener actualizados tus gastos registrados.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- NOTIFICACIÓN 2 -->
+              <div class="notification-item">
+
+                <div class="notification-icon">
+
+                  <span class="material-symbols-outlined">
+                    security
+                  </span>
+
+                </div>
+
+                <div class="notification-content">
+
+                  <strong>
+                    Seguridad de la cuenta
+                  </strong>
+
+                  <span>
+                    Tu sesión se encuentra protegida correctamente.
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+
+        <!-- CUENTA DESKTOP -->
+        <div class="account-wrapper">
+
+          <button
+            type="button"
+            class="account-button"
+            aria-label="Cuenta"
+            (click)="toggleAccount()"
+          >
+
+            <span class="material-symbols-outlined">
+              account_circle
+            </span>
+
+          </button>
+
+
+          @if (accountOpen) {
+
+            <div class="account-panel">
+
+              <!-- INFORMACIÓN DEL USUARIO -->
+              <div class="account-header">
+
+                <div class="account-avatar">
+
+                  <span class="material-symbols-outlined">
+                    person
+                  </span>
+
+                </div>
+
+                <div class="account-info">
+
+                  <strong>
+                    {{ user?.name || 'Usuario' }}
+                  </strong>
+
+                  <span>
+                    {{ user?.email || 'Sin correo' }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="account-divider"></div>
+
+
+              <!-- ESTADO -->
+              <div class="account-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                  Sesión activa · ID #{{ user?.id }}
+                </span>
+
+              </div>
+
+
+              <!-- CERRAR SESIÓN -->
+              <button
+                type="button"
+                class="account-logout"
+                (click)="logout()"
+              >
+
+                <span class="material-symbols-outlined">
+                  logout
+                </span>
+
+                <span>
+                  Cerrar sesión
+                </span>
+
+              </button>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- PAGE CONTENT -->
+    <section class="page-content">
+
+      <router-outlet></router-outlet>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       MOBILE BOTTOM NAVIGATION
+       ========================================= -->
+  <nav class="mobile-bottom-nav">
+
+    <!-- INICIO -->
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="mobile-nav-item"
+    >
+
+      <span class="material-symbols-outlined">
+        dashboard
+      </span>
+
+      <span>
+        Inicio
+      </span>
+
+    </a>
+
+
+    <!-- GASTOS -->
+    <a
+      routerLink="/expenses"
+      routerLinkActive="active"
+      class="mobile-nav-item"
+    >
+
+      <span class="material-symbols-outlined">
+        payments
+      </span>
+
+      <span>
+        Gastos
+      </span>
+
+    </a>
+
+
+    <!-- NUEVO GASTO -->
+    <a
+      routerLink="/expenses"
+      class="mobile-add-button"
+      aria-label="Nuevo gasto"
+    >
+
+      <span class="material-symbols-outlined">
+        add
+      </span>
+
+    </a>
+
+
+    <!-- MOVIMIENTOS -->
+    <a
+      routerLink="/movements"
+      routerLinkActive="active"
+      class="mobile-nav-item"
+    >
+
+      <span class="material-symbols-outlined">
+        receipt_long
+      </span>
+
+      <span>
+        Movimientos
+      </span>
+
+    </a>
+
+
+    <!-- REPORTES -->
+    <a
+      routerLink="/reports"
+      routerLinkActive="active"
+      class="mobile-nav-item"
+    >
+
+      <span class="material-symbols-outlined">
+        insert_chart
+      </span>
+
+      <span>
+        Reportes
+      </span>
+
+    </a>
+
+  </nav>
+
+</div>
