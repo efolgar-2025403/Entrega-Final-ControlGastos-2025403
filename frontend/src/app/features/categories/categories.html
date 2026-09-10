@@ -1,0 +1,455 @@
+<section class="categories-page">
+
+  <div class="page-header">
+
+    <div>
+
+      <span class="page-eyebrow">
+        GESTIÓN
+      </span>
+
+      <h1>
+        Categorías
+      </h1>
+
+      <p>
+        Organice sus gastos e ingresos mediante categorías.
+      </p>
+
+    </div>
+
+    <div class="category-count">
+
+      <span>
+        {{ categories.length }}
+      </span>
+
+      <small>
+        {{
+          categories.length === 1
+            ? 'categoría'
+            : 'categorías'
+        }}
+      </small>
+
+    </div>
+
+  </div>
+
+
+  @if (successMessage) {
+
+    <div class="alert success">
+      {{ successMessage }}
+    </div>
+
+  }
+
+
+  @if (errorMessage) {
+
+    <div class="alert error">
+      {{ errorMessage }}
+    </div>
+
+  }
+
+
+  <div class="content-grid">
+
+    <!-- FORMULARIO -->
+
+    <section class="card form-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="section-label">
+
+            {{
+              editingId === null
+                ? 'NUEVA CATEGORÍA'
+                : 'EDITAR CATEGORÍA'
+            }}
+
+          </span>
+
+          <h2>
+
+            {{
+              editingId === null
+                ? 'Crear categoría'
+                : 'Actualizar categoría'
+            }}
+
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <form
+        (ngSubmit)="saveCategory()"
+      >
+
+        <!-- NOMBRE -->
+
+        <div class="form-group">
+
+          <label for="name">
+            Nombre
+          </label>
+
+          <input
+            id="name"
+            name="name"
+            type="text"
+            [(ngModel)]="form.name"
+            placeholder="Ej. Alimentación"
+            maxlength="100"
+            autocomplete="off"
+          />
+
+        </div>
+
+
+        <!-- TIPO -->
+
+        <div class="form-group">
+
+          <label for="type">
+            Tipo de categoría
+          </label>
+
+          <select
+            id="type"
+            name="type"
+            [(ngModel)]="form.type"
+          >
+
+            <option value="expense">
+              Gastos
+            </option>
+
+            <option value="income">
+              Ingresos
+            </option>
+
+          </select>
+
+          <small class="field-help">
+
+            Esta categoría solo aparecerá al registrar
+            {{
+              form.type === 'expense'
+                ? 'gastos'
+                : 'ingresos'
+            }}.
+
+          </small>
+
+        </div>
+
+
+        <!-- DESCRIPCIÓN -->
+
+        <div class="form-group">
+
+          <label for="description">
+            Descripción
+          </label>
+
+          <textarea
+            id="description"
+            name="description"
+            [(ngModel)]="form.description"
+            placeholder="Describe esta categoría..."
+            maxlength="255"
+            rows="4"
+          ></textarea>
+
+        </div>
+
+
+        <!-- BOTONES -->
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="saving"
+          >
+
+            @if (saving) {
+
+              Guardando...
+
+            } @else {
+
+              {{
+                editingId === null
+                  ? 'Crear categoría'
+                  : 'Guardar cambios'
+              }}
+
+            }
+
+          </button>
+
+
+          @if (editingId !== null) {
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="cancelEdit()"
+            >
+
+              Cancelar
+
+            </button>
+
+          }
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- LISTADO -->
+
+    <section class="card list-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <span class="section-label">
+            CATEGORÍAS REGISTRADAS
+          </span>
+
+          <h2>
+            Listado
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="refresh-button"
+          (click)="loadCategories()"
+          [disabled]="loading"
+        >
+
+          ↻ Actualizar
+
+        </button>
+
+      </div>
+
+
+      @if (loading) {
+
+        <div class="state-message">
+
+          <div class="loader"></div>
+
+          <p>
+            Cargando categorías...
+          </p>
+
+        </div>
+
+      }
+
+      @else if (categories.length === 0) {
+
+        <div class="state-message empty">
+
+          <div class="empty-icon">
+            +
+          </div>
+
+          <h3>
+            No hay categorías
+          </h3>
+
+          <p>
+            Cree su primera categoría para comenzar
+            a organizar sus gastos e ingresos.
+          </p>
+
+        </div>
+
+      }
+
+      @else {
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Nombre
+                </th>
+
+                <th>
+                  Tipo
+                </th>
+
+                <th>
+                  Descripción
+                </th>
+
+                <th>
+                  Fecha de creación
+                </th>
+
+                <th class="actions-column">
+                  Acciones
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                category of categories;
+                track category.id
+              ) {
+
+                <tr>
+
+                  <!-- NOMBRE -->
+
+                  <td>
+
+                    <div class="category-name">
+
+                      <span
+                        class="category-dot"
+                        [class.income-dot]="
+                          category.type === 'income'
+                        "
+                      ></span>
+
+                      {{ category.name }}
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- TIPO -->
+
+                  <td>
+
+                    <span
+                      class="category-type"
+                      [class.income]="
+                        category.type === 'income'
+                      "
+                    >
+
+                      {{
+                        getCategoryTypeLabel(
+                          category.type
+                        )
+                      }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- DESCRIPCIÓN -->
+
+                  <td>
+
+                    <span class="description">
+
+                      {{
+                        category.description ||
+                        'Sin descripción'
+                      }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- FECHA -->
+
+                  <td>
+
+                    {{
+                      category.created_at
+                        | date:'dd/MM/yyyy'
+                    }}
+
+                  </td>
+
+
+                  <!-- ACCIONES -->
+
+                  <td>
+
+                    <div class="actions">
+
+                      <button
+                        type="button"
+                        class="action-button edit"
+                        (click)="editCategory(category)"
+                        title="Editar"
+                      >
+
+                        Editar
+
+                      </button>
+
+
+                      <button
+                        type="button"
+                        class="action-button delete"
+                        (click)="deleteCategory(category)"
+                        title="Eliminar"
+                      >
+
+                        Eliminar
+
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      }
+
+    </section>
+
+  </div>
+
+</section>

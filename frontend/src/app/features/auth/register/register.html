@@ -1,0 +1,250 @@
+<div class="register-page">
+
+  <!-- FONDO -->
+
+  <div class="register-background"></div>
+
+  <!-- CONTENEDOR -->
+
+  <main class="register-container">
+    <section class="register-card">
+
+  <!-- BRAND -->
+  <div class="brand">
+
+    <div class="brand-logo">
+      <img
+        src="/logo.png"
+        alt="Control-Gastos Logo"
+      />
+    </div>
+
+    <div class="brand-text">
+      <strong>
+        Control-Gastos
+      </strong>
+
+      <span>
+        Gestión financiera
+      </span>
+    </div>
+
+  </div>
+
+  <!-- HEADER -->
+  <div class="register-header">
+
+    <span class="eyebrow">
+      REGISTRO DE USUARIO
+    </span>
+
+    <h1>
+      Crear cuenta
+    </h1>
+
+    <p>
+      Registre sus datos para comenzar.
+    </p>
+
+  </div>
+
+  <!-- ERROR -->
+  @if (errorMessage) {
+    <div class="register-error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  <!-- FORMULARIO -->
+  <form (ngSubmit)="register()">
+
+    <!-- NOMBRE -->
+    <div class="form-group">
+
+      <label for="name">
+        Nombre completo
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="material-symbols-outlined">
+          person
+        </span>
+
+        <input
+          id="name"
+          name="name"
+          type="text"
+          [(ngModel)]="name"
+          placeholder="Nombre completo"
+          autocomplete="name"
+        />
+
+      </div>
+
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-group">
+
+      <label for="email">
+        Correo electrónico
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="material-symbols-outlined">
+          mail
+        </span>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="email"
+          placeholder="correo@ejemplo.com"
+          autocomplete="email"
+        />
+
+      </div>
+
+    </div>
+
+    <!-- CONTRASEÑA -->
+    <div class="form-group">
+
+      <label for="password">
+        Contraseña
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="material-symbols-outlined">
+          lock
+        </span>
+
+        <input
+          id="password"
+          name="password"
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          placeholder="••••••••"
+          autocomplete="new-password"
+        />
+
+        <button
+          type="button"
+          class="password-toggle"
+          (click)="togglePassword()"
+          aria-label="Mostrar contraseña"
+        >
+          <span class="material-symbols-outlined">
+            {{ showPassword ? 'visibility_off' : 'visibility' }}
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- CONFIRMAR CONTRASEÑA -->
+    <div class="form-group">
+
+      <label for="confirmPassword">
+        Confirmar contraseña
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="material-symbols-outlined">
+          lock_reset
+        </span>
+
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          [(ngModel)]="confirmPassword"
+          placeholder="••••••••"
+          autocomplete="new-password"
+        />
+
+        <button
+          type="button"
+          class="password-toggle"
+          (click)="toggleConfirmPassword()"
+          aria-label="Mostrar contraseña"
+        >
+          <span class="material-symbols-outlined">
+            {{
+              showConfirmPassword
+                ? 'visibility_off'
+                : 'visibility'
+            }}
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- BOTÓN -->
+    <button
+      type="submit"
+      class="register-button"
+      [disabled]="loading"
+    >
+
+      @if (loading) {
+
+        <span>
+          CREANDO CUENTA...
+        </span>
+
+      } @else {
+
+        <span>
+          CREAR CUENTA
+        </span>
+
+        <span class="material-symbols-outlined">
+          arrow_forward
+        </span>
+
+      }
+
+    </button>
+
+  </form>
+
+  <!-- LOGIN -->
+  <div class="login-link">
+
+    <span>
+      ¿Ya tiene una cuenta?
+    </span>
+
+    <a routerLink="/login">
+      Inicia sesión
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="register-footer">
+
+    <span>
+      CONTROL-GASTOS
+    </span>
+
+    <span>
+      Sistema de gestión y control financiero
+    </span>
+
+  </div>
+
+</section>
+
+  </main>
+
+</div>
