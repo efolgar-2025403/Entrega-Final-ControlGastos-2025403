@@ -1,0 +1,866 @@
+:host {
+  display: block;
+
+  --bg: #080808;
+
+  --surface: #0a0a0a;
+  --surface-low: #121212;
+  --surface-high: #1b1b1b;
+
+  --border: #27272a;
+  --border-light: #1c1c1c;
+
+  --gold: #d4af37;
+  --gold-dim: #c5a028;
+
+  --gold-soft: rgba(212, 175, 55, 0.08);
+  --gold-border: rgba(212, 175, 55, 0.2);
+
+  --text: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.reports-page {
+  width: 100%;
+
+  max-width: 1440px;
+
+  min-height: 100%;
+
+  margin: 0 auto;
+
+  padding: 32px;
+
+  box-sizing: border-box;
+
+  background: var(--bg);
+
+  color: var(--text);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.page-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+}
+
+.page-eyebrow,
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  line-height: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 32px;
+
+  line-height: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+.page-header p {
+  max-width: 650px;
+
+  margin: 7px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  line-height: 21px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   REFRESH BUTTON
+   ========================================= */
+
+.refresh-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding: 0 14px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: var(--surface-low);
+
+  color: var(--text-secondary);
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.refresh-button:hover {
+  background: var(--gold-soft);
+
+  border-color: var(--gold-border);
+
+  color: var(--gold);
+
+  transform: translateY(-1px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.refresh-button .material-symbols-outlined {
+  font-size: 17px;
+}
+
+
+/* =========================================
+   ALERT
+   ========================================= */
+
+.alert {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  padding: 13px 16px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+}
+
+.alert.error {
+  border: 1px solid rgba(239, 68, 68, 0.2);
+
+  background: rgba(239, 68, 68, 0.06);
+
+  color: #fca5a5;
+}
+
+.alert .material-symbols-outlined {
+  font-size: 18px;
+}
+
+
+/* =========================================
+   SUMMARY
+   ========================================= */
+
+.summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================
+   SUMMARY CARD
+   ========================================= */
+
+.summary-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-height: 120px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.summary-card:hover {
+  border-color: #3f3f46;
+
+  transform: translateY(-2px);
+}
+
+.summary-card.featured {
+  border-color: var(--gold-border);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(212, 175, 55, 0.08),
+      transparent 55%
+    ),
+    var(--surface);
+}
+
+
+/* =========================================
+   SUMMARY ICON
+   ========================================= */
+
+.summary-icon {
+  display: grid;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  place-items: center;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: var(--surface-low);
+
+  color: var(--text-secondary);
+}
+
+.summary-icon.gold {
+  border-color: var(--gold-border);
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+}
+
+.summary-icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+
+/* =========================================
+   SUMMARY TEXT
+   ========================================= */
+
+.summary-card span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  line-height: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.summary-card.featured span {
+  color: var(--text-secondary);
+}
+
+.summary-card strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 22px;
+
+  line-height: 28px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+.summary-card.featured strong {
+  color: var(--gold);
+}
+
+
+/* =========================================
+   REPORT GRID
+   ========================================= */
+
+.reports-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(320px, 0.85fr);
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   CARD
+   ========================================= */
+
+.card {
+  overflow: hidden;
+
+  min-width: 0;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
+.card-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 21px 22px;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+.card-header h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 18px;
+
+  line-height: 26px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+}
+
+
+/* =========================================
+   CATEGORY LIST
+   ========================================= */
+
+.category-list {
+  padding: 6px 22px 18px;
+}
+
+.category-row {
+  padding: 16px 0;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+.category-row:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   CATEGORY INFO
+   ========================================= */
+
+.category-info,
+.category-values {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.category-title {
+  display: flex;
+
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 9px;
+}
+
+.category-title strong {
+  overflow: hidden;
+
+  color: var(--text);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.category-dot,
+.expense-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.25);
+}
+
+.category-count {
+  flex-shrink: 0;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+
+  line-height: 16px;
+}
+
+
+/* =========================================
+   CATEGORY VALUES
+   ========================================= */
+
+.category-values {
+  margin-top: 8px;
+}
+
+.category-values strong {
+  color: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.category-values span {
+  color: var(--gold);
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   PROGRESS
+   ========================================= */
+
+.progress-track {
+  width: 100%;
+
+  height: 5px;
+
+  margin-top: 9px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: var(--surface-high);
+}
+
+.progress-bar {
+  height: 100%;
+
+  min-width: 2px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--gold-dim),
+      var(--gold)
+    );
+
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.16);
+
+  transition: width 0.4s ease;
+}
+
+
+/* =========================================
+   EXPENSE LIST
+   ========================================= */
+
+.expense-list {
+  padding: 6px 22px 18px;
+}
+
+.expense-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 16px 0;
+
+  border-bottom: 1px solid var(--border-light);
+
+  transition:
+    background 0.2s ease;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-item:hover {
+  background: #101010;
+}
+
+
+/* =========================================
+   EXPENSE MAIN
+   ========================================= */
+
+.expense-main {
+  display: flex;
+
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 12px;
+}
+
+.expense-main > div {
+  min-width: 0;
+}
+
+.expense-main strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: var(--text);
+
+  font-size: 13px;
+
+  line-height: 20px;
+
+  font-weight: 500;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.expense-main small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+
+  line-height: 17px;
+}
+
+.separator {
+  margin: 0 3px;
+
+  color: #52525b;
+}
+
+
+/* =========================================
+   EXPENSE AMOUNT
+   ========================================= */
+
+.expense-amount {
+  flex-shrink: 0;
+
+  color: var(--gold);
+
+  font-size: 13px;
+
+  line-height: 20px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   LOADING / EMPTY
+   ========================================= */
+
+.loading-card,
+.empty-state {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 300px;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  color: var(--text-muted);
+}
+
+.loading-card p,
+.empty-state p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  line-height: 18px;
+}
+
+.empty-state h3 {
+  margin: 12px 0 5px;
+
+  color: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   EMPTY ICON
+   ========================================= */
+
+.empty-icon {
+  display: grid;
+
+  place-items: center;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid var(--gold-border);
+
+  border-radius: 10px;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+}
+
+.empty-icon .material-symbols-outlined {
+  font-size: 22px;
+}
+
+
+/* =========================================
+   LOADER
+   ========================================= */
+
+.loader {
+  width: 28px;
+  height: 28px;
+
+  margin-bottom: 12px;
+
+  border: 2px solid var(--border);
+
+  border-top-color: var(--gold);
+
+  border-radius: 50%;
+
+  animation: reports-spin 0.8s linear infinite;
+}
+
+@keyframes reports-spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1100px) {
+
+  .reports-page {
+    padding: 28px 24px;
+  }
+
+  .summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .reports-page {
+    padding: 24px 16px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+
+    line-height: 34px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+  }
+
+  .summary-card {
+    min-height: 100px;
+
+    padding: 18px;
+  }
+
+  .reports-grid {
+    gap: 16px;
+  }
+
+  .card-header {
+    padding: 18px;
+  }
+
+  .category-list,
+  .expense-list {
+    padding-left: 18px;
+
+    padding-right: 18px;
+  }
+
+  .expense-item {
+    padding: 15px 0;
+  }
+
+}

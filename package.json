@@ -1,0 +1,12 @@
+{
+  "name": "control-gastos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicación web para la gestión y control de gastos personales",
+  "scripts": {
+    "start": "pnpm --parallel --filter backend --filter frontend start",
+    "dev": "pnpm --parallel --filter backend --filter frontend dev",
+    "build": "pnpm --filter backend build && pnpm --filter frontend build",
+    "test": "pnpm --filter backend test && pnpm --filter frontend test"
+  }
+}
